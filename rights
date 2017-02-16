@@ -1,0 +1,31 @@
+# -*- mode: conf -*-
+# vim:ft=cfg
+
+# Rights management file for Radicale - A simple calendar server
+#
+# The default path for this kind of files is ~/.config/radicale/rights
+# This can be changed in the configuration file
+#
+# This file gives independant examples to help users write their own
+# configuration files. Using these examples together in the same configuration
+# file is meaningless.
+#
+# The first rule matching both user and collection patterns will be returned.
+
+# Give write access to owners
+[owner-write]
+user: .+
+collection: %(login)s
+permission: rw
+
+# This means all users starting with "admin" may read any collection
+[admin]
+user: admin.*
+collection: .*
+permission: r
+
+# Allow authenticated user to read public calendars
+[allow-everyone-read]
+user: .+
+collection: .*/public\.ics
+permission: r
